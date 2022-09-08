@@ -22,7 +22,6 @@ class DragableWidget extends StatefulWidget {
 
 class _DragableWidgetState extends State<DragableWidget> {
   ValueNotifier<SwipeValue> swipeValueNotifier = ValueNotifier(SwipeValue.none);
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -76,7 +75,8 @@ class _DragableWidgetState extends State<DragableWidget> {
         if (dragUpdateDetails.delta.dx < 0 &&
             dragUpdateDetails.globalPosition.dx <
                 MediaQuery.of(context).size.width / 2) {
-          swipeValueNotifier.value = SwipeValue.left;
+          swipeValueNotifier.value =
+              SwipeValue.left; //draggable widget is dragged to left
         }
       },
       onDragEnd: (drag) {

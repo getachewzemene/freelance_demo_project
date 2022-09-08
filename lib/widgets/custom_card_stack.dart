@@ -13,6 +13,8 @@ class CustomCardStack extends StatefulWidget {
 
 class _CustomCardStackState extends State<CustomCardStack>
     with SingleTickerProviderStateMixin {
+  List<Item> leftItemList = [];
+  List<Item> rightItemList = [];
   List<Item> itemList = [
     const Item(
         imageURL: "assets/images/image1.jpg",
@@ -38,6 +40,12 @@ class _CustomCardStackState extends State<CustomCardStack>
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         itemList.removeLast();
+        if (leftItemList.isNotEmpty) {
+          leftItemList.clear();
+        }
+        if (rightItemList.isNotEmpty) {
+          rightItemList.clear();
+        }
         _animationController.reset();
         swipeValueNotifier.value = SwipeValue.none;
       }
@@ -147,6 +155,10 @@ class _CustomCardStackState extends State<CustomCardStack>
                   onPressed: () {
                     swipeValueNotifier.value = SwipeValue.left;
                     _animationController.forward();
+                    leftItemList.add(itemList.last);
+                    for (var item in leftItemList) {
+                      print("left item ${item.title}");
+                    }
                   },
                   icon: const Icon(
                     Icons.close,
@@ -175,6 +187,10 @@ class _CustomCardStackState extends State<CustomCardStack>
                   onPressed: () {
                     swipeValueNotifier.value = SwipeValue.right;
                     _animationController.forward();
+                    rightItemList.add(itemList.last);
+                    for (var item in rightItemList) {
+                      print("right item ${item.title}");
+                    }
                   },
                   icon: const Icon(
                     Icons.favorite,
