@@ -37,7 +37,7 @@ class _CustomCardStackState extends State<CustomCardStack>
     );
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        // itemList.removeLast();
+        itemList.removeLast();
         _animationController.reset();
         swipeValueNotifier.value = SwipeValue.none;
       }
