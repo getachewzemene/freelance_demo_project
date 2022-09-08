@@ -30,7 +30,7 @@ class _DragableWidgetState extends State<DragableWidget> {
       feedback: Material(
         color: Colors.transparent,
         child: ValueListenableBuilder(
-          valueListenable: widget.swipeValueNotifier,
+          valueListenable: swipeValueNotifier,
           builder: (context, swipe, _) => RotationTransition(
             turns: widget.swipeValueNotifier.value != SwipeValue.none
                 ? widget.swipeValueNotifier.value == SwipeValue.left
@@ -42,23 +42,17 @@ class _DragableWidgetState extends State<DragableWidget> {
                 ItemCard(item: widget.item),
                 swipe != SwipeValue.none
                     ? swipe == SwipeValue.right
-                        ? Positioned(
+                        ? const Positioned(
                             top: 40.0,
                             left: 20.0,
-                            child: Transform.rotate(
-                                angle: 12,
-                                child: const ItemTag(
-                                  text: "LIKE",
-                                  color: Color.fromARGB(255, 145, 231, 32),
-                                )))
-                        : Positioned(
+                            child: ItemTag(
+                              text: "LIKE",
+                              color: Color.fromARGB(255, 63, 230, 21),
+                            ))
+                        : const Positioned(
                             top: 50,
                             right: 24,
-                            child: Transform.rotate(
-                              angle: -12,
-                              child: const ItemTag(
-                                  text: "NOPE", color: Colors.red),
-                            ))
+                            child: ItemTag(text: "NOPE", color: Colors.red))
                     : const SizedBox.shrink()
               ],
             ),
@@ -100,7 +94,7 @@ class _DragableWidgetState extends State<DragableWidget> {
                             left: 30,
                             child: ItemTag(
                               text: 'LIKE',
-                              color: Color.fromARGB(255, 145, 231, 32),
+                              color: Color.fromARGB(255, 63, 230, 21),
                             ),
                           )
                         : Positioned(

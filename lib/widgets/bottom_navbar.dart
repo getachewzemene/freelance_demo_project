@@ -19,13 +19,12 @@ class BottomNavBar extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: Material(
-        color: Colors.transparent,
-        shape: CircleBorder(side: BorderSide(color: color)),
+      child: Center(
         child: Card(
           elevation: 10.0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),
+          shape: RoundedRectangleBorder(
+              side: BorderSide(color: color),
+              borderRadius: BorderRadius.circular(50.0)),
           child: IconButton(
             onPressed: onPressed,
             iconSize: 40.0,

@@ -34,22 +34,22 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding:
               const EdgeInsets.only(top: 30.0), //top padding with 30 pixels
-          child: Column(children: [
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
             Center(
               child: SizedBox(
-                width: 60.0,
                 height: 90.0,
                 child: Stack(
                   children: [
                     const Text(
                       "Tind...",
-                      style: TextStyle(color: Colors.grey),
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 207, 199, 199)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0),
                       child: Image.asset(
                         "assets/images/tinder_logo.png",
-                        fit: BoxFit.fitHeight,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ],
